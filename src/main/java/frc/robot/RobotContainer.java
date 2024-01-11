@@ -1,0 +1,34 @@
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
+package frc.robot;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Drive;
+import frc.robot.subsystems.Drivetrain;
+
+public class RobotContainer {
+  public static Joystick joystick = new Joystick(0);
+  public static JoystickButton button = new JoystickButton(joystick, 1);
+  public static Drivetrain drivetrain = new Drivetrain();
+  public static Drive drive = new Drive();
+  
+
+  public RobotContainer() {
+    configureBindings();
+    CommandScheduler.getInstance().setDefaultCommand(drivetrain, drive);
+  }
+
+  private void configureBindings() {
+    
+  }
+
+  public Command getAutonomousCommand() {
+    return Commands.print("No autonomous command configured");
+  }
+}
